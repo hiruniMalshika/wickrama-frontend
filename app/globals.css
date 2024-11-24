@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Global Styles */
+html,
 body {
-  @apply bg-gray-100 text-gray-900;
+  height: 100%; /* Ensure the body takes up full height. */
+  background-color: #f3f4f6; /* Light gray background for the app. */
+}
+
+img {
+  max-width: 100%; /* Prevent images from overflowing their containers. */
+  height: auto;
 }
