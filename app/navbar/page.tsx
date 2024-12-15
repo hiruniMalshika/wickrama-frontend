@@ -1,9 +1,10 @@
-"use client"
+'use client'
+import React from "react";
 import { useState } from "react"
 import {Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/react';
 import {Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import User from '../../public/user-profile-icon.jpg';
-
+import Link from 'next/link'
 const user = {
     name: 'Tom Cook',
     email: 'tom@example.com',
@@ -11,10 +12,10 @@ const user = {
 }
 
 const navigation = [
-    { name: 'Home', href :'#', current: true},
-    { name: 'Products', href :'#', current: false},
-    { name: 'About', href :'#', current: false},
-    { name: 'Contact', href :'#', current: false},
+    { name: 'Home', href :'/', current: true},
+    { name: 'Products', href :'/products', current: false},
+    { name: 'About', href :'/about', current: false},
+    { name: 'Contact', href :'/contact', current: false},
 ]
 
 const userNavigation = [
@@ -30,31 +31,31 @@ export default function Navbar(){
     return (
         <>
             <div className="min-h-full">
-                <Disclosure as="nav" className="bg-orange-300">
+                <Disclosure as="nav" className="bg-sky-400">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="flex h-16 items-center justify-between">
                             <div className="flex items-center">
                                 {/* Logo */}
                                 <img
-                                 src="/icon.png"
+                                 src="/logo-s.svg"
                                  alt="Your Company"
-                                 className="h-8 w-16"
+                                 className="h-24 w-24"
                                  />
                                  {/* Navigation */}
                                  <div className="hidden md:block">
                                     <div className="ml-10 flex items-baseline space-x-4">
                                         {
                                         navigation.map((item)=> (
-                                            <a  
-                                                key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current ? 'bg-amber-600 text-white' : 'text-orange-50 hover:bg-red-400 hover:text-red-950',
-                                                    'rounded-md px-3 py-2 text-sm font-medium'
-                                                )}
-                                            >
-                                            {item.name}
-                                            </a>
+                                            <Link legacyBehavior key={item.name} href={item.href}>
+                                                <a  
+                                                    className={classNames(
+                                                        item.current ? 'bg-yellow-400 text-white' : 'text-orange-50 hover:bg-fuchsia-400 hover:text-red-950',
+                                                        'rounded-md px-3 py-2 text-sm font-medium'
+                                                    )}
+                                                >
+                                                {item.name}
+                                                </a>
+                                            </Link>
                                         ))}
                                     </div>
                                  </div>
